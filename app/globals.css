@@ -2,26 +2,132 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ------------------------------------------------------------
+   GLOBAL THEME VARIABLES
+------------------------------------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --accent: #00eaff;
+  --bg: #0a0f14;
+  --text: #e5e7eb;
 }
 
-@media (prefers-color-scheme: dark) {
+/* Light Mode (optional)
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg: #ffffff;
+    --text: #1f2937;
+    --accent: #0ea5e9;
+  }
+}
+*/
+
+/* ------------------------------------------------------------
+   GLOBAL RESET
+------------------------------------------------------------ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ------------------------------------------------------------
+   MAX WIDTH CONTAINER
+------------------------------------------------------------ */
+.max-w-container {
+  max-width: 1200px;
+}
+
+/* ------------------------------------------------------------
+   ACCENT COLOR
+------------------------------------------------------------ */
+.text-accent {
+  color: var(--accent);
+}
+
+.bg-accent {
+  background-color: var(--accent);
+}
+
+.border-accent {
+  border-color: var(--accent);
+}
+
+/* ------------------------------------------------------------
+   CUSTOM SCROLLBAR
+------------------------------------------------------------ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f141a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #35f1ff;
+}
+
+/* ------------------------------------------------------------
+   TEXT SELECTION COLOR
+------------------------------------------------------------ */
+::selection {
+  background: var(--accent);
+  color: black;
+}
+
+/* ------------------------------------------------------------
+   SMOOTH SHIMMER (OPTIONAL FOR IMAGES)
+------------------------------------------------------------ */
+.shimmer {
+  animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.8;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* ------------------------------------------------------------
+   GLOW UTILITIES (GLOBAL)
+   Use: shadow-glow, shadow-glow-lg
+------------------------------------------------------------ */
+.shadow-glow {
+  box-shadow: 0 0 20px var(--accent);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.shadow-glow-lg {
+  box-shadow: 0 0 40px var(--accent);
+}
+
+/* ------------------------------------------------------------
+   SECTION TOP/BOTTOM PADDING
+------------------------------------------------------------ */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* ------------------------------------------------------------
+   MOBILE OPTIMIZATION
+------------------------------------------------------------ */
+@media (max-width: 640px) {
+  h1, h2, h3 {
+    line-height: 1.2 !important;
   }
 }
